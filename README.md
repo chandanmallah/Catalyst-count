@@ -49,66 +49,6 @@ python.exe .\manage.py runserver
 
 
 
-It seems like you're looking for a way to divide the content based on whether the shell is still open or closed. In a linear README format, you cannot add content that is contextually dependent on the user's actions in the terminal.
-
-However, you can provide clear instructions to the user on what to do next in both cases. Here's a way to structure it:
-
-markdown
-Copy code
-## Installation
-
-**1. Get the Code:** Clone this repository or download and unzip the files to a location of your choice.
-
-**2. Navigate to the Project:** In your terminal, move into the project folder using the command:
-```sh
-cd catalyst-count-main
-3. Install Dependencies: Install the required dependencies using the following command:
-
-sh
-Copy code
-pip install django
-4. Set Up the Database: Prepare the database by applying migrations:
-
-sh
-Copy code
-python manage.py makemigrations
-python manage.py migrate
-5. Configure Database Connection: Open the .env file inside the catalyst_count folder. Make sure to set SECRET_KEY and DATABASE_URL. Adjust the DATABASE_URL to match your PostgreSQL database:
-
-sh
-Copy code
-DATABASE_URL=postgres://catalyst_media_count_user:tI5ACqZ4r3zon1EnNF883naI5uIWNawE@dpg-cjjoo1gcfp5c738glggg-a.singapore-postgres.render.com/catalyst_media_count
-6. Create a Superuser: Generate a superuser by entering dummy credentials:
-
-sh
-Copy code
-python manage.py createsuperuser
-7. Usage: To launch the development server, execute the following command:
-
-sh
-Copy code
-python.exe .\manage.py runserver
-8. Command Sequence Completed: You can now close the terminal or shell.
-
-Next Steps
-Server Running
-The server will start running at http://localhost:8000/. Make sure there are no errors in the command prompt.
-
-Login
-Access the login page at http://localhost:8000/login. Use the superuser credentials created during installation to explore other pages.
-
-Data Upload
-Head to http://localhost:8000/dataupload to upload large CSV files containing company data.
-
-Query Builder
-Visit http://localhost:8000/querybuilder to utilize the query builder page. Apply filters based on name, year founded, industry, and country. After applying filters, clicking "Query Data" will display the matching record count.
-
-Users
-Check out http://localhost:8000/users to access the users page. This section lists all system users, accessible only to logged-in users.
-
-Begin your journey to simplified data management with Catalyst Media's tool. Happy exploring!
-
-
 
 
 
