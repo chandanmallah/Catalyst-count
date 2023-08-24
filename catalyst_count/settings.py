@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import environ
+import dj_database_url
 
 environ.Env.read_env()
 env = environ.Env()
@@ -73,15 +74,17 @@ WSGI_APPLICATION = 'catalyst_count.wsgi.application'
 
 # DATABASES = env.db
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catalyst2',
-        'USER': 'postgres',  
-        'PASSWORD': 'chandan',  
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'catalyst2',
+    #     'USER': 'postgres',  
+    #     'PASSWORD': 'chandan',  
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 }
+
+DATABASES["default"] = dj_database_url.parse("postgres://catalyst_media_count_user:tI5ACqZ4r3zon1EnNF883naI5uIWNawE@dpg-cjjoo1gcfp5c738glggg-a.singapore-postgres.render.com/catalyst_media_count")
 
 
 

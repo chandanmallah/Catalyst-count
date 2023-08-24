@@ -9,15 +9,12 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from .serializers import CompanySerializer
 from .models import Company
-import pandas as pd
 from django import forms
 import csv
 # from accounts.models import MyUser
-from ninja import NinjaAPI
 # from ninja.security import APIKeyHeader
 # from knox.models import AuthToken
 
-myapp_api = NinjaAPI(version='2.0.0')
 
 
 def login_view(request):
