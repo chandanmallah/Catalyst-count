@@ -27,3 +27,19 @@ Before diving in, make sure you have the following software installed on your sy
 ```sh
 cd catalyst-count-main
 
+# Install Dependencies: Install the required dependencies using the following command
+pip install django
+
+# Set Up the Database: Prepare the database by applying migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Configure Database Connection: Open the .env file inside the catalyst_count folder. Make sure to set SECRET_KEY and DATABASE_URL. Adjust the DATABASE_URL to match your PostgreSQL database
+DATABASE_URL=postgres://your_db_user:your_db_password@localhost/your_db_name
+
+# Create a Superuser: Generate a superuser by entering dummy credentials
+python manage.py createsuperuser
+
+# Usage: To launch the development server, execute the following command
+python.exe .\manage.py runserver
+
