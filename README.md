@@ -11,10 +11,16 @@ Once the user submits the form,  the count of records is displayed based on the 
 **Prerequisites**
 Before diving in, make sure you have the following software installed on your system:
 
-- **Python** (version 3.11.x)
-- **Django** (version 4.2.2)
-- **PostgreSQL** (version 13.x)
-- **django-environ** (version 0.10.0)
+- **Python** (version 3.9.x)
+- **Django** (version 3.2.19)
+- **PostgreSQL** (version 15.x)
+- **django-environ** (django-environ==0.4.5)
 - **djangorestframework** (version 3.14.0)
 - **psycopg2-binary** (version 2.9.6)
+- **dj-database-url** version(2.0.0)
+
+##Installation
+Get the Code: Clone this repository or download and unzip the files to a location of your choice.
+
+Navigate to the Project: In your terminal, move into the project folder using the command:
 
