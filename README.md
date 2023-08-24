@@ -35,11 +35,20 @@ python manage.py makemigrations
 python manage.py migrate
 
 # Configure Database Connection: Open the .env file inside the catalyst_count folder. Make sure to set SECRET_KEY and DATABASE_URL. Adjust the DATABASE_URL to match your PostgreSQL database
-DATABASE_URL=postgres://your_db_user:your_db_password@localhost/your_db_name
+DATABASE_URLpostgres://catalyst_media_count_user:tI5ACqZ4r3zon1EnNF883naI5uIWNawE@dpg-cjjoo1gcfp5c738glggg-a.singapore-postgres.render.com/catalyst_media_count
 
 # Create a Superuser: Generate a superuser by entering dummy credentials
 python manage.py createsuperuser
 
 # Usage: To launch the development server, execute the following command
 python.exe .\manage.py runserver
+
+# Command Sequence Completed
+# You can now close the terminal or shell.
+
+
+
+
+
+
 
