@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Data Upload{% endblock %}
+
+{% block css_files %}
+<style>
+  body {
+    background-image: url("https://images.wallpaperscraft.com/image/single/light_faded_background_85547_1280x720.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  .btn-neon:hover,
+  .form-control:focus,
+  .form-control:hover {
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+    border-color: #39ff14;
+  }
+
+  /*  font */
+  body, h1, h2, h3, h4, h5, h6, label, input, p, th, td {
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  /* Button style */
+  .btn-neon {
+    background-color: black;
+    color: white;
+    border-color: black;
+    font-size: 24px;
+    font-weight: bold;
+    border-width: 2px;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .btn-neon:hover {
+    background-color: #39ff14; 
+    border-color: #39ff14; 
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.7); 
+  }
+
+  
+  .shiny-black-text {
+    color: black;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  .form-control-file {
+    border-color: black;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .form-control-file:hover {
+    border-color: #333; 
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.7); 
+  }
+  .form-control-file:focus {
+    border-color: #39ff14; 
+    box-shadow: none; 
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'myapp/snippets/navbar.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mb-4 text-center custom-font shiny-black-text">Upload Data</h1>
+            <form id="uploadForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-4 text-center">
+                    <label for="csvFile" class="form-label shiny-black-text" style="font-size: 20px;">Choose a CSV file to upload:</label>
+                    <input type="file" class="form-control form-control-lg form-control-file" id="csvFile" name="csvFile" accept=".csv" required>
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-neon btn-lg" id="uploadButton">Upload CSV</button>
+                </div>
+            </form>
+            <div id="progressDiv" class="mb-3 d-none">
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p id="progressStatus"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("uploadForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        const uploadButton = document.getElementById("uploadButton");
+        const progressBar = document.getElementById("progressBar");
+        const progressStatus = document.getElementById("progressStatus");
+        const progressDiv = document.getElementById("progressDiv");
+
+        uploadButton.disabled = true;
+        progressBar.style.width = "0";
+        progressStatus.textContent = "Uploading...";
+
+        progressDiv.classList.remove("d-none"); 
+
+        const totalDuration = 10000; 
+        let currentTime = 0;
+
+        const interval = setInterval(() => {
+            currentTime += 1000; // 
+            const progress = (currentTime / totalDuration) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressStatus.textContent = `Uploading... ${Math.round(progress)}%`;
+
+            if (currentTime >= totalDuration) {
+                clearInterval(interval);
+                uploadButton.disabled = false;
+                progressBar.style.width = "100%";
+                progressStatus.textContent = "Upload complete!";
+            }
+        }, 1000);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+        })
+        .then((response) => {
+            if (!response.ok) {
+                clearInterval(interval); 
+                throw new Error("Upload failed.");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (data.success) {
+                alert("Upload successful!");
+                window.location.href = "{% url 'dataupload' %}";
+            } else {
+                alert("Upload failed: " + data.error);
+            }
+        })
+        .catch((error) => {
+            uploadButton.disabled = false;
+            progressBar.style.width = "0";
+            progressStatus.textContent = "Upload failed.";
+            console.error(error);
+        });
+    });
+</script>
+{% endblock %}

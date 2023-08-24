@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Query Builder{% endblock %}
+
+{% block css_files %}
+<style>
+  body {
+    background-image: url("https://images.wallpaperscraft.com/image/single/light_faded_background_85547_1280x720.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .form-control:focus,
+  .form-control:hover {
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+    border-color: #39ff14;
+  }
+
+  /*  font */
+  body, h1, h2, h3, h4, h5, h6, label, input, p {
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+    font-family: "Times New Roman", Times, serif; 
+  }
+
+
+  .btn-primary, .btn-secondary {
+    color: white;
+  }
+
+  /* form container */
+  .form-container {
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 20px;
+    border-radius: 15px; 
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.7); 
+  }
+
+  /* query data button */
+  #queryButton {
+    background-color: black;
+  }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+{% include 'myapp/snippets/navbar.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-container">
+                <h1 class="mb-4 text-center custom-font">Query Builder</h1>
+                <form method="post" action="{% url 'querybuilder' %}"> 
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="nameFilter" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameFilter" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="yearFoundedFilter" class="form-label">Year Founded:</label>
+                        <input type="text" class="form-control" id="yearFoundedFilter" name="year_founded" placeholder="Enter year founded">
+                    </div>
+                    <div class="mb-3">
+                        <label for="industryFilter" class="form-label">Industry:</label>
+                        <input type="text" class="form-control" id="industryFilter" name="industry" placeholder="Enter industry">
+                    </div>
+                    <div class="mb-3">
+                        <label for="countryFilter" class="form-label">Country:</label>
+                        <input type="text" class="form-control" id="countryFilter" name="country" placeholder="Enter country">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg" id="queryButton">Query Data</button>
+                        <a href="{% url 'querybuilder' %}" class="btn btn-secondary btn-lg" id="resetButton">Reset Filters</a>
+                    </div>
+                </form>
+                {% if count is not None %}
+                <div id="resultDiv" class="text-center">
+                    <p id="resultMessage">Number of records found: {{ count }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

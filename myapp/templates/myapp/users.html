@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}All Users{% endblock %}
+
+{% block css_files %}
+<style>
+  body {
+    background-image: url("https://images.wallpaperscraft.com/image/single/light_faded_background_85547_1280x720.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .table tr:hover {
+    background-color: rgba(57, 255, 20, 0.2);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* font */
+  body, h1, h2, h3, h4, h5, h6, label, input, p, th, td {
+    color: black;
+    font-family: "Times New Roman", Times, serif; 
+  }
+
+
+  .btn-primary, .btn-secondary {
+    color: white;
+  }
+
+
+  .table {
+    background-color: transparent; 
+    border: none; 
+  }
+
+  .table thead th {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border: none; 
+    font-size: 18px; 
+  }
+
+  .table tbody td {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none; 
+    border-radius: 15px; 
+    backdrop-filter: blur(5px); 
+    font-size: 16px; 
+  }
+
+
+  .add-user-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'myapp/snippets/navbar.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h1 class="mb-4 text-center custom-font">All Users</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{% if user.is_active %}Yes{% else %}No{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'admin:auth_user_add' %}" class="add-user-button">Add User</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
