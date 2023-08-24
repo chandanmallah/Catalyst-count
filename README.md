@@ -19,8 +19,11 @@ Before diving in, make sure you have the following software installed on your sy
 - **psycopg2-binary** (version 2.9.6)
 - **dj-database-url** version(2.0.0)
 
-##Installation
-Get the Code: Clone this repository or download and unzip the files to a location of your choice.
+## Installation
 
-Navigate to the Project: In your terminal, move into the project folder using the command:
+**1. Get the Code:** Clone this repository or download and unzip the files to a location of your choice.
+
+**2. Navigate to the Project:** In your terminal, move into the project folder using the command:
+```sh
+cd catalyst-count-main
 
