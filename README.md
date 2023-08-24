@@ -17,7 +17,7 @@ Query builder (search for desired data)
 All users data
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/ab8c4eb5-74ef-4f8e-a68a-c1c1e259b976)
-logout
+click on add user's to add data
 
 
 
