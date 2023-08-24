@@ -4,6 +4,9 @@ progress of the upload.
 Users are allow to filter the data using a form. 
 Once the user submits the form,  the count of records is displayed based on the applied filters.
 
+![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/5305af18-7d83-41c2-a037-2df4722da218)
+
+
 ## Quick Start Guide
 
 **Welcome to Catalyst Media's Data Management Tool!** This guide will help you set up and use our Django Web Application for efficient data handling and analysis. Follow these steps to get started:
@@ -45,16 +48,3 @@ python.exe .\manage.py runserver
 
 # Command Sequence Completed
 # You can now close the terminal or shell.
-
-
-
-
-
-
-![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/46a8d08f-4965-4cf1-ade5-e7d38cd19cc7)
-login page
-
-
-
-
-
