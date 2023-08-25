@@ -5,16 +5,16 @@ Users are allow to filter the data using a form.
 Once the user submits the form,  the count of records is displayed based on the applied filters.
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/5305af18-7d83-41c2-a037-2df4722da218)
-login page
+login page  http://localhost:8000/login
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/1b0da75a-ea95-4d73-a264-6b7c62cd3271)
-upload csv data
+upload csv data http://localhost:8000/dataupload
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/9b17c9b6-04ef-4f9c-a817-3fb323cf925f)
-Query builder (search for desired data)
+Query builder (search for desired data) http://localhost:8000/querybuilder
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/3ae69971-f439-4919-bcc0-6ca727dd16ac)
-All users data
+All users data http://localhost:8000/users
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/ab8c4eb5-74ef-4f8e-a68a-c1c1e259b976)
 click on add user's to add data
