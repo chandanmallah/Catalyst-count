@@ -14,10 +14,8 @@ upload csv data http://localhost:8000/dataupload
 Query builder (search for desired data) http://localhost:8000/querybuilder
 
 ![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/3ae69971-f439-4919-bcc0-6ca727dd16ac)
-All users data http://localhost:8000/users
+All users data and click on add user's to add user http://localhost:8000/users
 
-![image](https://github.com/chandanmallah/Catalyst-count/assets/45361929/ab8c4eb5-74ef-4f8e-a68a-c1c1e259b976)
-click on add user's to add data
 
 
 
